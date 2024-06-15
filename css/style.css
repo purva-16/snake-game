@@ -15,7 +15,7 @@
     align-content: center;
 }
 
- .board{
+#board{
     margin-left: 270px ;
     background: linear-gradient(rgb(170,236,170) , rgb(236,236,167));
     width : 100vmin;
@@ -26,15 +26,45 @@
     grid-template-columns: repeat(18, 1fr); 
 }
 
+
+#scoreBox{
+    position: absolute;
+    top: 9px;
+    right: 120px;
+    font-size: 39px;
+    font-weight: bold;
+
+   
+
+}
+
+#HIscorebox{
+    position: absolute;
+    top: 55px;
+    right: 120px;
+    font-size: 39px;
+    font-weight: bold;
+}
+
+
 .head{
-    background-color: red;
+    background: linear-gradient(black , blue);
+    border: 2px solid purple;
+    transform: scale(1.02);
+    border-radius: 7px;
 }
 
 .snake{
       
     background-color: purple;
+    border: .25vmin solid white;
+    border-radius: 12px;
+
 }
 .food{
-    background-color: yellow;
+    background: linear-gradient(red , purple);
+    border: .25vmin solid black;
+    border-radius: 8px;
+    
 
 }
