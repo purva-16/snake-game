@@ -1,7 +1,7 @@
 // game constants
 const board = document.querySelector('#board');
-const hiscoreBox = document.querySelector('HIscorebox');
-const scoreBox = document.querySelector('scoreBox');
+const hiscoreBox = document.querySelector('#HIscorebox');
+const scoreBox = document.querySelector('#ScoreBox');
 let inputDir = {x:0 , y:0 };
 const food_sound = new Audio('food.mp3');
 const gameOverSound = new Audio('gameover.mp3');
@@ -15,18 +15,18 @@ let snakeArr = [
 ];
 food = {x:6 , y:7};
 
-console.log("y")
+console.log("y1")
 //game functions
 function main(ctime) {
     window.requestAnimationFrame(main);
-    console.log(ctime)
+    //console.log(ctime)
     if((ctime - lastPaintTime)/1000 < 1/speed){
         return;
     }
     lastPaintTime = ctime;
     gameEngine();
 }
-console.log("y")
+console.log("y2")
 
 function isCollide(snake) {
     // If you bump into yourself 
@@ -47,7 +47,7 @@ function isCollide(snake) {
 
 //if you have eaten food , increment the score and regenerate the food 
 
-console.log("y")
+console.log("y3")
 
 
 
@@ -68,12 +68,14 @@ function gameEngine(){
     if(snakeArr[0].y === food.y && snakeArr[0].x ===food.x){
         food_sound.play();
         score += 1;
+        scoreBox.innerHTML = "Score : " + score;
+        
         if(score>highscorereveal){
-             highscorereveal = score;
-             localStorage.setItem("hiscore", JSON.stringify(highscorereveal));
-             hiscoreBox.innerHTML = "HiScore: " + highscorereveal;
+            highscorereveal = score;
+            localStorage.setItem("hiscore", JSON.stringify(highscorereveal));
+            hiscoreBox.innerHTML = "HiScore: " + highscorereveal;
          }
-        scoreBox.innerHTML = "Score: " + score;
+        
         snakeArr.unshift({x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y});
         let a = 2;
         let b = 16;
@@ -90,7 +92,7 @@ function gameEngine(){
 
 
 
-    console.log("y")
+    console.log("y4")
     board.innerHTML = "";
     snakeArr.forEach((e, index)=>{
         snakeElement = document.createElement('div');
@@ -116,6 +118,11 @@ function gameEngine(){
 
 }
 
+
+
+// main logic
+
+musicSound.play();
 let highscore = localStorage.getItem("hiscore");
 if (highscore === null){
     highscorereveal = 0 ;
